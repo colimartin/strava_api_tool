@@ -4,12 +4,9 @@ import urllib3
 # Request a new access token
 def request_access_token(client_id, client_secret, refresh_token):
 
-    #somecode = "3854168d4c1d83071fa7a4851d7d0c6ce2eb5e23"
-
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
     auth_url = "https://www.strava.com/oauth/token"
-    #activites_url = "https://www.strava.com/api/v3/athlete/activities"
 
     payload = {
         'client_id': client_id,
@@ -199,9 +196,9 @@ club_id = 1161246
 # 200 activities will not necesssarily by available
 per_page = 100
 
-client_id = "110735"
-client_secret = "dd203f2be2e18317a031683971cecf496d0e28f7"
-refresh_token = "df568be819620708796213604f0823344f58ac56"
+client_id = ""
+client_secret = ""
+refresh_token = ""
 
 # print_all, set to true if you want to run the print_all_activities function to print all athlete activities
 # Set print_all_total_dist to true if you want a running total of club mileage to be printed with the activities
