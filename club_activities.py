@@ -4,12 +4,9 @@ import urllib3
 # Request a new access token
 def request_access_token(client_id, client_secret, refresh_token):
 
-    #somecode = "3854168d4c1d83071fa7a4851d7d0c6ce2eb5e23"
-
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
     auth_url = "https://www.strava.com/oauth/token"
-    #activites_url = "https://www.strava.com/api/v3/athlete/activities"
 
     payload = {
         'client_id': client_id,
