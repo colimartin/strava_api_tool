@@ -49,7 +49,7 @@ Total Distance: (optional)
 # Total distance is a running total of the distance run across all activities, 
 # Is tallied when total_distance parameter is set to True
 # Distances in miles (rounded to 2 decimals)
-# NOTE: NEED TO WORK ON CATCHING UnicodeEncodeError MAYBE
+# Emojis added to workout titles not supported, so .encode("utf-8") used on print statement
 def print_all_activities(activities, total_distance):
     total_dist_meters = 0
     
@@ -57,7 +57,7 @@ def print_all_activities(activities, total_distance):
         total_dist_meters += activity['distance']
         print('='*5, f'ACTIVITY {i}', '='*5)
         print('Athlete:', activity['athlete']['firstname'], activity['athlete']['lastname'])
-        print('Workout Title:', activity['name'])
+        print('Workout Title:', activity['name'].encode("utf-8"))
         print('Distance:', round(activity['distance']/1609.34, 2), 'miles')
         if total_distance == True:
             print('Total Distance (miles):', round(total_dist_meters/1609.34, 2))
@@ -87,6 +87,7 @@ def get_activities_by_athlete(activities):
 
 # Uses activities_by_athlete dictionary to print all activities grouped by athlete
 # Distances in miles (rounded to 2 decimals)
+# Emojis added to workout titles not supported, so .encode("utf-8") used on print statement
 """
 Format:
 ===== ATHLETE: =====
@@ -101,7 +102,7 @@ def print_activities_by_athlete(activities_by_athlete):
         print('='*5, f'ATHLETE: {athlete}', '='*5)
         activities = activities_by_athlete[athlete]["runs"]
         for activity in activities:
-            print('Workout Title:', activity['name'])
+            print('Workout Title:', activity['name'].encode("utf-8"))
             print('Distance:', round(activity['distance']/1609.34, 2), 'miles')
             print("=")
         print('Total Distance:', round(activities_by_athlete[athlete]["mileage"]/1609.34, 2), 'miles')
@@ -192,18 +193,18 @@ def main(client_id, client_secret, refresh_token, club_id, per_page, print_all, 
 # User Input:
 # club_id, found in the URL when you access your club on the Strava website
 # https://www.strava.com/clubs/#######/
-club_id = 1161246
+club_id = 0000000
 
 # per_page, the number of activities to read into the app from your club's total activities on Strava
 # NOTE: maximum is 200, Strava only saves a certain amount of time into the past
 # 200 activities will not necesssarily by available
 per_page = 100
 
-client_id = "110735"
-client_secret = "dd203f2be2e18317a031683971cecf496d0e28f7"
-refresh_token = "df568be819620708796213604f0823344f58ac56"
+client_id = ""
+client_secret = ""
+refresh_token = ""
 
-# print_all, set to true if you want to run the print_all_activities function to print all athlete activities
+# print_all, set to true if you want to run the print_all_activities function to print all club activities
 # Set print_all_total_dist to true if you want a running total of club mileage to be printed with the activities
 print_all = True
 print_all_total_dist = True
